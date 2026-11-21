@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webサイトセキュリティ診断</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Webサイトセキュリティ診断</h1>
+
+        <p>
+            Webサイトのセキュリティ設定を確認するサービスです。
+        </p>
+
+        <form action="/check" method="POST">
+    <label for="url">診断対象のURL</label>
+
+    <input
+        type="url"
+        id="url"
+        name="url"
+        placeholder="https://example.com"
+        required
+    >
+
+    <button type="submit">診断する</button>
+</form>
+    </main>
+   
+
+</body>
+</html>

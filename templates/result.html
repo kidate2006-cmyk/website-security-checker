@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>診断結果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <main class="container">
+
+        <h1>診断結果</h1>
+
+        <p>診断対象：{{ url }}</p>
+<p>診断日時：{{ checked_at }}</p>
+       
+<section>
+    <h2>SSL/TLS証明書診断</h2>
+    <p>{{ result }}</p>
+
+    <h3>証明書の有効期限チェック</h3>
+
+    {% if remaining_days is not none %}
+        <p>
+            残り有効日数：
+            <strong>{{ remaining_days }}日</strong>
+        </p>
+
+       <p>
+    判定：
+    {% if remaining_days is not none %}
+        {% if remaining_days < 0 %}
+            <strong class="status warning">
+                {{ expiry_status }}
+            </strong>
+        {% elif remaining_days < 30 %}
+            <strong class="status warning">
+                {{ expiry_status }}
+            </strong>
+        {% else %}
+            <strong class="status success">
+                {{ expiry_status }}
+            </strong>
+        {% endif %}
+    {% else %}
+        <strong>{{ expiry_status }}</strong>
+    {% endif %}
+</p>
+    {% else %}
+        <p>{{ expiry_status }}</p>
+    {% endif %}
+</section>
+
+
+        <section>
+            <h2>HTTPセキュリティヘッダー診断</h2>
+
+<div class="evaluation">
+    <h3>総合評価</h3>
+
+    <p class="evaluation-result">
+        {{ evaluation }}
+    </p>
+
+    <p>
+        5項目中 {{ configured_count }} 項目に
+        セキュリティヘッダーの設定が確認されました。
+    </p>
+</div>
+<section class="missing-section">
+
+    <h2>改善が必要な項目</h2>
+
+    {% if missing_headers %}
+
+        <ul>
+            {% for item in missing_headers %}
+                <li>
+                    <strong>{{ item.name }}</strong>
+                    <span class="status warning">
+                        未設定
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p class="all-configured">
+            5項目すべてのヘッダーの存在を確認しました。
+        </p>
+
+    {% endif %}
+
+</section>
+
+            <ul>
+               {% for item in header_results %}
+    <li>
+       <span class="header-name">
+    <a href="{{ url_for('guide', page={
+        'Strict-Transport-Security': 'hsts',
+        'Content-Security-Policy': 'csp',
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'xframe',
+        'Referrer-Policy': 'referrer'
+    }[item.name]) }}">
+        {{ item.name }}
+    </a>
+</span>
+
+        {% if item.status == "設定あり" %}
+            <span class="status success">
+                {{ item.status }}
+            </span>
+        {% else %}
+            <span class="status warning">
+                {{ item.status }}
+            </span>
+        {% endif %}
+
+        <p>{{ item.description }}</p>
+
+        {% if item.value %}
+            <p>設定値：{{ item.value }}</p>
+        {% endif %}
+        {% if item.status == "設定あり" %}
+
+    <div class="advice success-message">
+        <strong>確認結果</strong>
+        <p>
+            ヘッダーの存在を確認しました。
+            設定値が適切かどうかは別途確認が必要です。
+        </p>
+    </div>
+
+{% else %}
+
+    <div class="advice warning-message">
+        <strong>改善アドバイス</strong>
+        <p>
+            このヘッダーは確認できませんでした。
+            解説ページを参考に設定を検討してください。
+        </p>
+    </div>
+
+{% endif %}
+    </li>
+{% endfor %}
+            </ul>
+        </section>
+        <form action="/download" method="POST">
+
+    <input type="hidden" name="url" value="{{ url }}">
+
+    <input type="hidden" name="checked_at" value="{{ checked_at }}">
+
+    <input type="hidden" name="result" value="{{ result }}">
+
+    <input type="hidden" name="remaining_days" value="{{ remaining_days }}">
+
+    <input type="hidden" name="expiry_status" value="{{ expiry_status }}">
+
+    <input type="hidden" name="header_results" value='{{ header_results | tojson }}'>
+
+    <input type="hidden" name="configured_count" value="{{ configured_count }}">
+
+    <input type="hidden" name="total_headers" value="{{ total_headers }}">
+
+    <input type="hidden" name="evaluation" value="{{ evaluation }}">
+
+    <button type="submit">PDFをダウンロード</button>
+
+</form>
+
+        <a href="/">トップページに戻る</a>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Content-Type-Optionsの解説</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+   <main class="container guide-page">
+        <h1>X-Content-Type-Options</h1>
+
+        <section>
+            <h2>1. X-Content-Type-Optionsとは？</h2>
+            <p>
+                X-Content-Type-Optionsは、ブラウザがサーバーから送られた
+                Content-Typeを無視して、ファイルの種類を独自に推測する
+                ことを防ぐためのセキュリティヘッダーです。
+            </p>
+            <p>
+                通常は nosniff という値を指定します。
+            </p>
+        </section>
+
+        <section>
+            <h2>2. 設定しない場合のリスク</h2>
+            <p>
+                ブラウザがファイルの種類を独自に推測すると、
+                意図しない形式でファイルを処理してしまう可能性があります。
+                条件によっては、悪意のあるコンテンツが実行される
+                リスクにつながります。
+            </p>
+        </section>
+
+        <section>
+            <h2>3. 設定方法</h2>
+            <p>
+                WebサーバーのHTTPレスポンスヘッダーに
+                X-Content-Type-Optionsを追加します。
+            </p>
+
+            <h3>設定例</h3>
+            <pre><code>X-Content-Type-Options: nosniff</code></pre>
+
+            <p>
+                nosniffを指定することで、ブラウザによる
+                MIMEタイプの推測を抑制します。
+            </p>
+        </section>
+
+        <section>
+            <h2>4. 設定時の注意点</h2>
+            <p>
+                nosniffを設定すると、Content-Typeが適切でない
+                JavaScriptやCSSなどがブラウザによって読み込まれなくなる
+                場合があります。
+            </p>
+            <p>
+                そのため、Webサーバーがファイルの種類に応じた
+                正しいContent-Typeを返していることを確認しましょう。
+            </p>
+        </section>
+
+        <button type="button" onclick="history.back()" class="back-button">
+    前のページに戻る
+</button>
+    </main>
+
+</body>
+</html>

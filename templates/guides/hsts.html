@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSTSの解説</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+   <main class="container guide-page">
+        <h1>Strict-Transport-Security（HSTS）</h1>
+
+        <section>
+            <h2>1. HSTSとは？</h2>
+            <p>
+                HSTSは、Webブラウザに対して、指定した期間HTTPS通信を
+                使用するように指示するセキュリティ機能です。
+                一度HSTSの設定を受け取ったブラウザは、
+                次回以降HTTPではなくHTTPSでアクセスします。
+            </p>
+        </section>
+
+        <section>
+            <h2>2. 設定しない場合のリスク</h2>
+            <p>
+                HTTPでアクセスしてしまうと、通信内容を第三者に
+                盗み見られたり、改ざんされたりする危険があります。
+                HSTSを設定することで、このようなHTTPへの
+                意図しないアクセスを防ぎやすくなります。
+            </p>
+        </section>
+
+        <section>
+            <h2>3. 設定方法</h2>
+            <p>
+                WebサーバーのHTTPレスポンスヘッダーに
+                Strict-Transport-Securityを追加します。
+            </p>
+
+            <h3>設定例</h3>
+            <pre><code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></pre>
+
+            <p>
+                max-ageは、ブラウザがHTTPSを強制する期間を秒数で指定します。
+                上記の例では1年間です。
+            </p>
+            <p>
+                includeSubDomainsは、サブドメインにも設定を適用する指定です。
+                すべてのサブドメインがHTTPSに対応している場合に使用します。
+            </p>
+        </section>
+
+        <section>
+            <h2>4. 設定時の注意点</h2>
+            <p>
+                HSTSを有効にすると、指定期間中はHTTPでアクセスできなくなります。
+                そのため、WebサイトがHTTPSで正常に動作することを
+                確認してから設定する必要があります。
+            </p>
+        </section>
+
+     <button type="button" onclick="history.back()" class="back-button">
+    前のページに戻る
+</button>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+
+
+/* ページ全体 */
+body {
+    font-family: sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #243b53;
+}
+
+/* メイン画面 */
+.container {
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+/* 大見出し */
+h1 {
+    color: #243b53;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* 小見出し */
+h2 {
+    color: #243b53;
+    font-size: 23px;
+    margin-top: 35px;
+}
+
+/* 説明文 */
+p {
+    color: #52606d;
+    line-height: 1.8;
+}
+
+/* 診断項目のまとまり */
+section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border: 1px solid #e1e8ef;
+    border-radius: 10px;
+}
+
+/* 診断項目の一覧 */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    text-align: left;
+}
+
+/* 各診断項目 */
+li {
+    background-color: white;
+    border: 1px solid #e1e8ef;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+/* ヘッダー名 */
+.header-name {
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* 診断ステータス */
+.status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 設定あり */
+.status.success {
+    color: #18794e;
+    background-color: #dcfce7;
+}
+
+/* 未設定 */
+.status.warning {
+    color: #a15c00;
+    background-color: #fff1d6;
+}
+
+/* 入力フォーム */
+label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #bcccdc;
+    border-radius: 6px;
+}
+
+/* ボタン */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2471a3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #1a5276;
+}
+
+/* リンク */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #2471a3;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+}
+
+.evaluation {
+    background-color: #eef6ff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.evaluation h3 {
+    margin-top: 0;
+}
+
+.evaluation-result {
+    font-size: 22px;
+    font-weight: bold;
+    color: #245a91;
+}
+/* ========================= */
+/* セキュリティ解説ページ用デザイン */
+/* ========================= */
+
+/* 解説ページ全体 */
+.guide-page {
+    text-align: left;
+}
+
+/* 解説ページのタイトル */
+.guide-page h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #2471a3;
+}
+
+/* 解説ページの各見出し */
+.guide-page h2 {
+    font-size: 21px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-left: 12px;
+    border-left: 4px solid #2471a3;
+}
+
+/* 解説ページの説明文 */
+.guide-page p {
+    text-align: left;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+/* 解説ページ内の小見出し */
+.guide-page h3 {
+    color: #334e68;
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+/* 設定例のコードブロック */
+.guide-page pre {
+    background-color: #243b53;
+    color: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* コード部分 */
+.guide-page pre code {
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+/* 解説ページのセクション */
+.guide-page section {
+    margin-top: 25px;
+    padding: 25px;
+    background-color: #f8fafc;
+    border: 1px solid #e1e8ef;
+    border-radius: 10px;
+}
+
+/* 戻るリンク */
+.guide-page > a {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #2471a3;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* 戻るリンクにマウスを乗せたとき */
+.guide-page > a:hover {
+    background-color: #1a5276;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+    .guide-page h1 {
+        font-size: 25px;
+    }
+
+    .guide-page h2 {
+        font-size: 19px;
+    }
+
+    .guide-page section {
+        padding: 16px;
+    }
+
+    .guide-page pre {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+/* 5項目の説明画面のレイアウト調整 */
+.guide-page {
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left;
+}
+/* 前のページに戻るボタン */
+.back-button {
+    display: block;
+    width: auto;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    background-color: #2471a3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* マウスを乗せたとき */
+.back-button:hover {
+    background-color: #1a5276;
+}
+/* 診断結果のアドバイス欄 */
+.advice {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* 設定ありの場合 */
+.success-message {
+    background-color: #ecfdf3;
+    border-left: 4px solid #22a06b;
+}
+
+/* 未設定の場合 */
+.warning-message {
+    background-color: #fff7e6;
+    border-left: 4px solid #e5a000;
+}
+
+/* アドバイスの見出し */
+.advice strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* アドバイスの文章 */
+.advice p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+/* 改善が必要な項目の一覧 */
+.missing-section {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #fff8ed;
+    border: 1px solid #f3d5a5;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* 見出し */
+.missing-section h2 {
+    margin-top: 0;
+    color: #a15c00;
+    font-size: 20px;
+}
+
+/* 未設定項目の一覧 */
+.missing-section ul {
+    margin-top: 15px;
+}
+
+/* 一覧の各項目 */
+.missing-section li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* すべて設定されている場合 */
+.all-configured {
+    padding: 12px;
+    background-color: #ecfdf3;
+    color: #18794e;
+    border-radius: 6px;
+    font-weight: bold;
+}

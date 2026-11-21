@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Frame-Optionsの解説</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+   <main class="container guide-page">
+        <h1>X-Frame-Options</h1>
+
+        <section>
+            <h2>1. X-Frame-Optionsとは？</h2>
+            <p>
+                X-Frame-Optionsは、自分のWebサイトが
+                他のWebサイトのiframeなどに埋め込まれることを
+                制限するためのセキュリティヘッダーです。
+            </p>
+            <p>
+                主にクリックジャッキング攻撃への対策として使用されます。
+            </p>
+        </section>
+
+        <section>
+            <h2>2. 設定しない場合のリスク</h2>
+            <p>
+                悪意のあるWebサイトに自分のサイトを埋め込まれ、
+                利用者が意図しないボタンなどをクリックさせられる
+                可能性があります。
+            </p>
+            <p>
+                このような攻撃をクリックジャッキングといいます。
+            </p>
+        </section>
+
+        <section>
+            <h2>3. 設定方法</h2>
+            <p>
+                WebサーバーのHTTPレスポンスヘッダーに
+                X-Frame-Optionsを追加します。
+            </p>
+
+            <h3>設定例1：他のサイトへの埋め込みを禁止</h3>
+            <pre><code>X-Frame-Options: DENY</code></pre>
+
+            <p>
+                DENYは、他のページからのiframeなどへの埋め込みを
+                禁止する設定です。
+            </p>
+
+            <h3>設定例2：同じサイトからの埋め込みのみ許可</h3>
+            <pre><code>X-Frame-Options: SAMEORIGIN</code></pre>
+
+            <p>
+                SAMEORIGINは、同じオリジンからの埋め込みのみを
+                許可する設定です。
+            </p>
+        </section>
+
+        <section>
+            <h2>4. 設定時の注意点</h2>
+            <p>
+                Webサイトの機能としてiframeによる埋め込みを
+                使用している場合、DENYを設定すると正常に
+                表示できなくなる可能性があります。
+            </p>
+            <p>
+                自分のWebサイトの利用方法に合わせて設定しましょう。
+            </p>
+            <p>
+                なお、現在はより柔軟な制御ができる
+                Content-Security-Policyのframe-ancestorsも
+                広く利用されています。
+            </p>
+        </section>
+
+        <button type="button" onclick="history.back()" class="back-button">
+    前のページに戻る
+</button>
+    </main>
+
+</body>
+</html>
